@@ -14,10 +14,10 @@ int check_cycle(listint_t *list)
 {
 	listint_t *temp;
 
-	if (!list)
+	if (list == NULL)
 		return (0);
 
-	temp = list;
+	temp = list->next;
 	while (temp != NULL)
 	{
 		temp = temp->next;
