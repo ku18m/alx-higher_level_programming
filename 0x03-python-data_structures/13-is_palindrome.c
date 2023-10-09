@@ -10,10 +10,12 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int len, tmp[100], i;
+	int len, *tmp, i;
 	bool flag = 0;
 	listint_t *check;
 
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
 	check = *head, len = 0;
 	while (check)
 	{
@@ -24,6 +26,9 @@ int is_palindrome(listint_t **head)
 		len = len / 2;
 	else
 		len = (len - 1) / 2, flag = 1;
+	tmp = (int *)malloc(len * sizeof(int));
+	if (tmp == NULL)
+		return (2);
 	check = *head, i = 0;
 	while (i < len)
 		tmp[i] = check->n, check = check->next, i++;
@@ -38,5 +43,6 @@ int is_palindrome(listint_t **head)
 		i--;
 	}
 
+	free(tmp);
 	return (1);
 }
