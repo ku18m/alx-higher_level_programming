@@ -1,46 +1,66 @@
 #include "lists.h"
 
 /**
+ * reverse_listint - reverse the given linked list.
+ *
+ * @head: pointer to list to be reversed.
+ *
+ * Return: Nothing.
+ */
+void reverse_listint(listint_t **head)
+{
+	listint_t *check1 = NULL;
+	listint_t *tmp = *head;
+	listint_t *check2 = NULL;
+
+	while (tmp)
+	{
+		check2 = tmp->next;
+		tmp->next = check1;
+		check1 = tmp;
+		tmp = check2;
+	}
+	*head = check1;
+}
+
+/**
  * is_palindrome - checks if a singly linked list is a palindrome.
  *
  * @head: pointer to list to be checked.
  *
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome,
- * OR 2 if it failed.
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
  */
 int is_palindrome(listint_t **head)
 {
-	int len, *tmp, i;
-	bool flag = 0;
-	listint_t *check;
+	listint_t *check1, *check2, *half, *tmp;
 
-	check = *head, len = 0;
-	while (check)
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+	check1 = *head, check2 = *head, half = NULL;
+	while (true)
 	{
-		check = check->next;
-		len++;
+		check2 = check2->next->next;
+		if (!check2)
+		{
+			half = check1->next;
+			break;
+		}
+		if (!check2->next)
+		{
+			half = check1->next->next;
+			break;
+		}
+		check1 = check1->next;
 	}
-	if (len % 2 == 0)
-		len = len / 2;
-	else
-		len = (len - 1) / 2, flag = 1;
-	tmp = (int *)malloc(len * sizeof(int));
-	if (tmp == NULL)
-		return (2);
-	check = *head, i = 0;
-	while (i < len)
-		tmp[i] = check->n, check = check->next, i++;
-	i = len - 1;
-	if (flag == 1)
-		check = check->next;
-	while (i >= 0)
+	reverse_listint(&half);
+	tmp = *head;
+	while (half && tmp)
 	{
-		if (check->n != tmp[i])
+		if (tmp->n != half->n)
 			return (0);
-		check = check->next;
-		i--;
+		half = half->next;
+		tmp = tmp->next;
 	}
 
-	free(tmp);
 	return (1);
 }
