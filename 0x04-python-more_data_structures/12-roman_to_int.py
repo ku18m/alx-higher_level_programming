@@ -14,9 +14,8 @@ def roman_to_int(roman_string):
     for c in roman_string:
         for key in roman_numeral.keys():
             if key == c:
-                if roman_numeral.get(prev_c) >= roman_numeral.get(key):
-                    num += roman_numeral.get(key)
-                else:
-                    num = roman_numeral.get(key) - num
+                num += roman_numeral.get(key)
+                if roman_numeral.get(prev_c) < roman_numeral.get(key):
+                    num -= roman_numeral.get(prev_c) * 2
         prev_c = c
     return num
