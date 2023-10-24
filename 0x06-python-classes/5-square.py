@@ -48,9 +48,9 @@ class Square:
 
     def my_print(self):
         """Instance public method to print a Square of size"""
-        if self._Square__size == 0:
-            print()
-        else:
-            for i in range(0, self._Square__size + 1):
+        if self._Square__size != 0:
+            for i in range(self._Square__size):
                 print("#" * self._Square__size)
                 i += 1
+        else:
+            print()
