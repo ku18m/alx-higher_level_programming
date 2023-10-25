@@ -19,9 +19,13 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self._Square__size = size
-        if (not isinstance(position, tuple) or len(position) != 2 or
-                not all(i >= 0 for i in position) or
-                not all(isinstance(i, int) for i in position)):
+        if (type(position) is not tuple):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (len(position) != 2):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (type(position[0]) is not int) or (type(position[1]) is not int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (position[0] < 0) or (position[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self._position = position
@@ -66,18 +70,20 @@ class Square:
         Raises:
             TypeError: If not a tuple and has 2 positive ints.
         """
-        if (not isinstance(value, tuple) or len(value) != 2 or
-                not all(i >= 0 for i in value) or
-                not all(isinstance(i, int) for i in value)):
+        if (type(value) is not tuple):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (len(value) != 2):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (type(value[0]) is not int) or (type(value[1]) is not int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif (value[0] < 0) or (value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self._position = value
 
     def my_print(self):
         """Instance public method to print a Square of size"""
-        if self._Square__size == 0:
-            print()
-        else:
+        if self._Square__size != 0:
             for k in range(self._position[1]):
                 print()
                 k += 1
@@ -85,3 +91,5 @@ class Square:
                 print(" " * self._position[0], end="")
                 print("#" * self._Square__size)
                 i += 1
+        else:
+            print()
