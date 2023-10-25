@@ -78,7 +78,7 @@ class SinglyLinkedList:
     def __str__(self):
         """Prints the linked list"""
         datas = []
-        tmp = self._head
+        tmp = self.__head
         while tmp is not None:
             datas.append(str(tmp.data))
             tmp = tmp.next_node
