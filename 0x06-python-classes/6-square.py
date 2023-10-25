@@ -23,7 +23,7 @@ class Square:
                 not all(i >= 0 and type(i) is int for i in position)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self._position = position
+            self.position = position
 
     def area(self):
         """Instance public method to return area.
