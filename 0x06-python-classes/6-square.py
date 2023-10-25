@@ -20,10 +20,10 @@ class Square:
         else:
             self._Square__size = size
         if (type(position) is not tuple or len(position) != 2 or
-                not all(i >= 0 and type(i) is int for i in position)):
+                not all(i >= 0 or type(i) is int for i in position)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self.position = position
+            self._position = position
 
     def area(self):
         """Instance public method to return area.
@@ -66,7 +66,7 @@ class Square:
             TypeError: If not a tuple and has 2 positive ints.
         """
         if (type(value) is not tuple or len(value) != 2 or
-                not all(i >= 0 and type(i) is int for i in value)):
+                not all(i >= 0 or type(i) is int for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self._position = value
