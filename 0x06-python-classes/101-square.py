@@ -96,16 +96,11 @@ class Square:
 
     def __str__(self):
         """String that represent in print function"""
-        if self._Square__size != 0:
-            for k in range(self._position[1]):
-                print()
-                k += 1
-            for i in range(self._Square__size):
-                print(" " * self._position[0], end="")
-                print("#" * self._Square__size, end="")
-                if i != self._Square__size - 1:
-                    print("")
-                i += 1
-        else:
-            print()
+        if self.__size != 0:
+            [print("") for i in range(0, self._position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self._position[0])]
+            [print("#", end="") for k in range(0, self._Square__size)]
+            if i != self._Square__size - 1:
+                print("")
         return ""
