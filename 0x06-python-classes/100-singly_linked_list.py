@@ -53,7 +53,7 @@ class SinglyLinkedList:
     """class SinglyLinkedList"""
     def __init__(self):
         """Initialize instance"""
-        self._head = None
+        self.__head = None
 
     def sorted_insert(self, value):
         """Public method to insert a node.
