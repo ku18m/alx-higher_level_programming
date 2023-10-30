@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-"""Solves the N queens problem"""
+"""
+Solves the N queens problem
+"""
 
 import sys
 
