@@ -10,6 +10,7 @@ Case 0: Importing
 Case 1: Given cases.
 
 >>> bg = BaseGeometry()
+
 >>> bg.integer_validator("my_int", 12)
 
 >>> bg.integer_validator("width", 89)
