@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+
+"""
+class Square.
+"""
+
+
+Rectangle = __import__('9-rectangle').Rectangle
+
+
+class Square(Rectangle):
+    """
+    class Square that inherits from Rectangle.
+
+    Args:
+        Rectangle: The parent class.
+    """
+
+    def __init__(self, size):
+        """
+        Public instance method to initialize the instance.
+
+        Args:
+            size: Square size
+        """
+        super().integer_validator("size", size)
+        super().__init__(size, size)
+        self.__size = size
+
+    def __str__(self):
+        """
+        Public instance method to represent class as string.
+        """
+
+        return "[Square] {:d}/{:d}".format(self.__size, self.__size)
