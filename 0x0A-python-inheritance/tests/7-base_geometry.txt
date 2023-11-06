@@ -1,4 +1,4 @@
-Test for 1-my_list.py
+Test for 7-base_geometry.py
 -------------------------------------------
 
 Case 0: Importing
@@ -109,3 +109,10 @@ Case 10: Passing dict to the method.
 Traceback (most recent call last):
 		...
 TypeError: ALX must be an integer
+
+-------------------------------------------
+
+Case 11: Passing integer to the method.
+
+>>> bg.integer_validator("ALX", 12)
+
