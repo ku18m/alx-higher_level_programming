@@ -23,8 +23,8 @@ class Rectangle(Base):
             id = Instances counter.
             width: Rectangle width.
             height: Rectangle height.
-            x:
-            y:
+            x: Rectangle Vertical position.
+            y: Rectangle Horizontal position.
         """
         self.width = width
         self.height = height
@@ -130,10 +130,14 @@ class Rectangle(Base):
 
     def display(self):
         """Public class method that prints rectangle instance with #."""
+        for k in range(self.y):
+            print()
         for i in range(self.height):
+            print(" " * self.x, end="")
             print("#" * self.width)
 
     def __str__(self):
         """Overriding __str__ method."""
-        return"[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
-                                                      self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height
+        )
