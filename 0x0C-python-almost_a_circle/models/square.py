@@ -78,3 +78,13 @@ class Square(Rectangle):
                     self.x = value
                 elif key == "y":
                     self.y = value
+
+    def to_dictionary(self):
+        """Puclic class method that returns the dict representation."""
+        keys = ["id", "size", "x", "y"]
+        self_dict = {}
+
+        for key in keys:
+            self_dict[key] = getattr(self, key)
+
+        return self_dict
