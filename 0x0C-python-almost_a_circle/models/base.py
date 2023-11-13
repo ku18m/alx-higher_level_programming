@@ -55,3 +55,17 @@ class Base:
 
         with open(filename, "w") as file:
             file.write(dicts_json)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Class static method that returns a list of json str res.
+
+        Args:
+            json_string: The json string.
+        """
+        normal_list = []
+
+        if json_string is not None:
+            normal_list = json.loads(json_string)
+
+        return normal_list
