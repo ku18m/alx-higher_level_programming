@@ -52,7 +52,6 @@ class Base:
                 dicts.append(instance.to_dictionary())
 
         dicts_json = cls.to_json_string(dicts)
-        print(dicts_json, type(dicts_json))
 
         with open(filename, "w") as file:
             file.write(dicts_json)
