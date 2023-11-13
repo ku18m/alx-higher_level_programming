@@ -132,3 +132,8 @@ class Rectangle(Base):
         """Public class method that prints rectangle instance with #."""
         for i in range(self.height):
             print("#" * self.width)
+
+    def __str__(self):
+        """Overriding __str__ method."""
+        return f"""[Rectangle] ({self.id}) {self.x}/{self.y}\
+        \b\b\b\b\b\b\b\b- {self.width}/{self.height}"""
