@@ -150,12 +150,25 @@ class Rectangle(Base):
             args: The passed values to assign.
             kwargs: The passed values with it's keywords to assign.
         """
-        
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
+        if len(args) > 0:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            except IndexError:
+                pass
+        else:
+            for key, value in kwargs.items():
+                match key:
+                    case "id":
+                        self.id = value
+                    case "width":
+                        self.width = value
+                    case "height":
+                        self.height = value
+                    case "x":
+                        self.x = value
+                    case "y":
+                        self.y = value
