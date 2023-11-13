@@ -5,6 +5,7 @@
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -150,3 +151,44 @@ class Base:
             pass
 
         return instances_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Class static methods that opens a window and draws all the Shapes.
+
+        Args:
+            list_rectangles: A list of rectangles to draw.
+            list_squares: A list of squares to draw.
+        """
+        arrow = turtle.Turtle()
+        arrow.screen.bgcolor("#2ca4b7")
+        arrow.pensize(7)
+        arrow.shape("arrow")
+        arrow.speed(1)
+
+        arrow.color("#c4bf25")
+        for rectangle in list_rectangles:
+            arrow.showturtle()
+            arrow.up()
+            arrow.goto(rectangle.x, rectangle.y)
+            arrow.down()
+            arrow.forward(rectangle.width)
+            arrow.left(90)
+            arrow.forward(rectangle.height)
+            arrow.left(90)
+            arrow.hideturtle()
+
+        arrow.color("#7a7822")
+        for square in list_squares:
+            arrow.showturtle()
+            arrow.up()
+            arrow.goto(square.x, square.y)
+            arrow.down()
+            arrow.forward(square.width)
+            arrow.left(90)
+            arrow.forward(square.height)
+            arrow.left(90)
+            arrow.hideturtle()
+
+        turtle.exitonclick()
