@@ -4,6 +4,7 @@
 
 
 import json
+import csv
 
 
 class Base:
@@ -99,6 +100,52 @@ class Base:
                 for dict in dicts_json:
                     instance = cls.create(**dict)
                     instances_list.append(instance)
+        except FileNotFoundError:
+            pass
+
+        return instances_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Class method that writes the JSON str res of list_objs to a file.
+
+        Args:
+            list_objs: A list of instances.
+        """
+        filename = f"{cls.__name__}.csv"
+
+        with open(filename, "w", newline="") as file:
+            if list_objs is not None:
+                if cls.__name__ == "Rectangle":
+                    keys = ["id", "width", "height", "x", "y"]
+                else:
+                    keys = ["id", "size", "x", "y"]
+
+                file_csv = csv.DictWriter(file, fieldnames=keys)
+
+                for instance in list_objs:
+                    file_csv.writerow(instance.to_dictionary())
+            else:
+                file.write("[]")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Class method that returns a list of instances."""
+        filename = f"{cls.__name__}.csv"
+        instances_list = []
+
+        try:
+            with open(filename, "r", newline="") as file:
+                if cls.__name__ == "Rectangle":
+                    keys = ["id", "width", "height", "x", "y"]
+                else:
+                    keys = ["id", "size", "x", "y"]
+                dicts = csv.DictReader(file, fieldnames=keys)
+                dicts = [
+                    dict([k, int(v)] for k, v in d.items()) for d in dicts
+                ]
+                instances_list = [cls.create(**d) for d in dicts]
         except FileNotFoundError:
             pass
 
