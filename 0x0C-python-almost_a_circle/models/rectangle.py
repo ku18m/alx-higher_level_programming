@@ -161,14 +161,13 @@ class Rectangle(Base):
                 pass
         else:
             for key, value in kwargs.items():
-                match key:
-                    case "id":
-                        self.id = value
-                    case "width":
-                        self.width = value
-                    case "height":
-                        self.height = value
-                    case "x":
-                        self.x = value
-                    case "y":
-                        self.y = value
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
