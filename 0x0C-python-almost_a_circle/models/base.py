@@ -47,10 +47,12 @@ class Base:
         dicts = []
         filename = f"{cls.__name__}.json"
 
-        for instance in list_objs:
-            dicts.append(instance.to_dictionary())
+        if list_objs is not None:
+            for instance in list_objs:
+                dicts.append(instance.to_dictionary())
 
         dicts_json = cls.to_json_string(dicts)
+        print(dicts_json, type(dicts_json))
 
         with open(filename, "w") as file:
             file.write(dicts_json)
