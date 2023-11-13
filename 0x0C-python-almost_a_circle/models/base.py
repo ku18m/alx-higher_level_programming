@@ -50,5 +50,7 @@ class Base:
         for instance in list_objs:
             dicts.append(instance.to_dictionary())
 
+        dicts_json = cls.to_json_string(dicts)
+
         with open(filename, "w") as file:
-            json.dump(dicts, file)
+            file.write(dicts_json)
