@@ -69,3 +69,20 @@ class Base:
             normal_list = json.loads(json_string)
 
         return normal_list
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Class method that returns an instance with giving attributes.
+
+        Args:
+            dictionary: The attributes dictionary.
+        """
+        if cls.__name__ == "Rectangle":
+            instance = cls(1, 1)
+        else:
+            instance = cls(1)
+
+        instance.update(**dictionary)
+
+        return instance
