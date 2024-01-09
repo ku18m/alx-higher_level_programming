@@ -10,12 +10,12 @@ class Rectangle {
 
   print () {
     for (let row = 0; row < this.height; row++) {
-      console.log("X".repeat(this.width));
+      console.log('X'.repeat(this.width));
     }
   }
 
   rotate () {
-    let temp = this.width;
+    const temp = this.width;
     this.width = this.height;
     this.height = temp;
   }
