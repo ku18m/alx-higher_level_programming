@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Python main files for testing
 *main.py
+
+# JS main files for testing
+*main.js
