@@ -16,7 +16,7 @@ if __name__ == "__main__":
         database=dbName
     )
     cursor = db.cursor()
-    cursor.execute("select * from states order by states.id")
+    cursor.execute("select * from states order by states.id asc")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
