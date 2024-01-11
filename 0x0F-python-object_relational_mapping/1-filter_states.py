@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-connects to a database and lists what matches the input.
+connects to a database and lists what starts with N.
 """
 import MySQLdb
 import sys

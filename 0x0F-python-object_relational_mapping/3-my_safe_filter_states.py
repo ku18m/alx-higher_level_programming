@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 connects to a database and lists what matches the input.
+safe from SQL injections.
 """
 import MySQLdb
 import sys
@@ -11,8 +12,6 @@ if __name__ == "__main__":
     password = sys.argv[2]
     dbName = sys.argv[3]
     stateName = sys.argv[4]
-    query = """select * from states where name = '{}'
-                order by id asc""".format(stateName)
 
     db = MySQLdb.connect(
         host="localhost",
@@ -22,7 +21,8 @@ if __name__ == "__main__":
         database=dbName
     )
     cursor = db.cursor()
-    cursor.execute(query)
+    cursor.execute("""select * from states where name = %s
+                    order by id asc""", (stateName,))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
