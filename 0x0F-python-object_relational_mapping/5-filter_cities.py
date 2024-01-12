@@ -26,8 +26,8 @@ if __name__ == "__main__":
                     where states.name like binary %s
                     order by cities.id asc""", (stateName,))
     rows = cursor.fetchall()
-    for row in rows:
-        print(row[0], end=", " if row != rows[-1] else "\n")
+    cities = list(row[0] for row in rows)
+    print(*cities, sep=", ", end="\n")
 
     cursor.close()
     db.close()
