@@ -2,8 +2,8 @@
 """
 connects to a database and lists all states.
 """
-import MySQLdb
 import sys
+import MySQLdb
 
 
 if __name__ == "__main__":

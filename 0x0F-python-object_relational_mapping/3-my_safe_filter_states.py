@@ -3,8 +3,8 @@
 connects to a database and lists what matches the input.
 safe from SQL injections.
 """
-import MySQLdb
 import sys
+import MySQLdb
 
 
 if __name__ == "__main__":
