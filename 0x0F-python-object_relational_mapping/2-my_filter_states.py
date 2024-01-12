@@ -11,7 +11,7 @@ if __name__ == "__main__":
     password = sys.argv[2]
     dbName = sys.argv[3]
     stateName = sys.argv[4]
-    query = """select * from states where name = '{}'
+    query = """select * from states where name like binary '{}'
                 order by id asc""".format(stateName)
 
     db = MySQLdb.connect(
