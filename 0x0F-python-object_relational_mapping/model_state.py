@@ -23,3 +23,10 @@ class State(Base):
                 unique=True
                 )
     name = Column(String(128), nullable=False)
+
+    def __repr__(self):
+        """string representation of State class
+        Returns:
+            str: representation of State class.
+        """
+        return f"{self.id}: {self.name}"
