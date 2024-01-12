@@ -20,6 +20,7 @@ if __name__ == "__main__":
     session = Session()
     states = session.query(State).filter(
         State.name.like(r"%a%")).order_by(State.id)
-    print(*states, sep="\n")
-    # session.close()
-    # engine.dispose()
+    for state in states:
+        print(state)
+    session.close()
+    engine.dispose()
