@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    deletes States that contains 'a' letter.
+    Lists all State objects, and corresponding City objects.
 """
 import sys
 from sqlalchemy import create_engine
