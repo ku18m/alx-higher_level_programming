@@ -30,4 +30,4 @@ class City(Base):
         Returns:
             str: representation of State class.
         """
-        return f"{self.id}: ({self.name}) {self.state_id}"
+        return f"{self.id}: {self.name}"
