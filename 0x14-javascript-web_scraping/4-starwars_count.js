@@ -7,11 +7,14 @@ request(url, (error, response, body) => {
   if (error) {
     console.log(error);
   } else if (response.statusCode === 200) {
-    const films = JSON.parse(body).results;
+    const eposides = JSON.parse(body).results;
     let presents = 0;
-    for (let i = 0; i < films.length; i++) {
-      if (films[i].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-        presents++;
+    for (const eposide in eposides) {
+      const epCharacters = eposides[eposide].characters;
+      for (const character in epCharacters) {
+        if (epCharacters[character].includes('18')) {
+          presents++;
+        }
       }
     }
     console.log(presents);
